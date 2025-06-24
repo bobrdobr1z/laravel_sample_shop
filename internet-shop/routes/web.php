@@ -11,3 +11,7 @@ Route::post('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name(
 Route::post('/checkout', [OrderController::class, 'store'])->name('checkout');
 Route::get('/feedback', [FeedbackController::class, 'show'])->name('feedback');
 Route::post('/feedback', [FeedbackController::class, 'send'])->name('feedback.send');
+
+Route::get('/delivery-payment', function () {
+    return view('pages.delivery_payment');
+})->name('delivery.payment');
