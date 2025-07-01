@@ -86,7 +86,11 @@
         @endforeach
     </div>
     <div class="actions">
-        <a href="{{ route('cart') }}" class="btn btn-success">Корзина</a>
-        <a href="{{ route('feedback') }}" class="btn btn-info">Обратная связь</a>
+<a href="{{ route('cart') }}" class="btn btn-success">Корзина</a>
+<a href="{{ route('feedback') }}" class="btn btn-info">Обратная связь</a>
+<a href="{{ route('payment') }}" class="btn btn-primary">Оплата</a>
+<a href="{{ route('delivery') }}" class="btn btn-primary">Доставка</a>
+<a href="{{ route('login') }}" class="btn btn-secondary">Вход</a>
+<a href="{{ route('register') }}" class="btn btn-secondary">Регистрация</a>
     </div>
 @endsection
