@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+// Используйте интерфейс MustVerifyEmail, если нужно проверять электронную почту
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,36 +14,36 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Атрибуты, которые можно массово заполнять.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name',       // Имя пользователя
+        'email',      // Электронная почта
+        'password',   // Пароль
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Атрибуты, которые должны быть скрыты при сериализации (например, при выводе в JSON).
      *
      * @var list<string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password',          // Пароль пользователя
+        'remember_token',    // Токен для запоминания входа
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Получить атрибуты, которые должны быть приведены к определённым типам.
      *
      * @return array<string, string>
      */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'email_verified_at' => 'datetime', // Дата подтверждения электронной почты
+            'password' => 'hashed',          // Хешировать пароль при сохранении
         ];
     }
 }
