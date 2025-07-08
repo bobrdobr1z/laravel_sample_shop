@@ -90,9 +90,5 @@
 <a href="{{ route('feedback') }}" class="btn btn-info">Обратная связь</a>
 <a href="{{ route('payment') }}" class="btn btn-primary">Оплата</a>
 <a href="{{ route('delivery') }}" class="btn btn-primary">Доставка</a>
-<<<<<<< HEAD
-=======
-
->>>>>>> f6d7962050b88512e87bee4b180a13460fb1bc1d
     </div>
 @endsection

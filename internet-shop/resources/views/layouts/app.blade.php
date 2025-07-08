@@ -4,20 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta charset="UTF-8">
-    <title>Мой сайт</title>
-    @vite('resources/js/app.js')
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Шрифты -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Скрипты -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Подключение стилей через Laravel Mix -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 </head>
 <body>
     
@@ -33,13 +30,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Левая часть навигации -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    <ul class="navbar-nav me-auto"></ul>
 
                     <!-- Правая часть навигации -->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Ссылки для авторизации -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -54,14 +48,14 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Выйти') }}
                                     </a>
 
@@ -75,13 +69,17 @@
                 </div>
             </div>
         </nav>
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-<img src="{{ asset('images/logo.png') }}" alt="Логотип" class="custom-img">
+        <!-- Логотип или другие элементы -->
+        <img src="{{ asset('images/logo.png') }}" alt="Логотип" class="custom-img">
+
         <!-- Основной контент -->
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <!-- Подключение скриптов через Laravel Mix -->
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
