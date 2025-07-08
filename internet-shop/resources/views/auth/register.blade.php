@@ -53,8 +53,13 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
                         <div class= "row mb-3">
                             <label for= "password-confirm" class= "col-md-4 col-form-label text-md-end">{{ __('Подтверждение пароля') }}</label>
+=======
+                        <div class="row mb-3">
+                            <label for "password-confirm" class= "col-md-4 col-form-label text-md-end">{{ __('Подтверждение пароля') }}</label>
+>>>>>>> f6d7962050b88512e87bee4b180a13460fb1bc1d
 
                             <div class= "col-md-6">
                                 <input id= "password-confirm" type= "password" class= "form-control" name= "password_confirmation" required autocomplete= "new-password">

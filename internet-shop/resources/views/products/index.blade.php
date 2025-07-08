@@ -71,7 +71,7 @@
         @foreach($products as $product)
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="{{ asset($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                    
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
@@ -90,5 +90,9 @@
 <a href="{{ route('feedback') }}" class="btn btn-info">Обратная связь</a>
 <a href="{{ route('payment') }}" class="btn btn-primary">Оплата</a>
 <a href="{{ route('delivery') }}" class="btn btn-primary">Доставка</a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6d7962050b88512e87bee4b180a13460fb1bc1d
     </div>
 @endsection
