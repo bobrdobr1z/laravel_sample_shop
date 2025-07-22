@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DeliveryController; 
 use App\Http\Controllers\GalleryController;
 
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::post('/upload', [PhotoController::class, 'upload'])->name('photo.upload');
 Route::get('/', [ProductController::class, 'index'])->name('home');

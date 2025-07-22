@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request; // Импортируем класс Request
 
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Отображение списка товаров.
      */
     public function index()
     {
@@ -15,18 +16,24 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+    /**
+     * Отображение корзины.
+     */
     public function cart()
     {
-    $cart = session()->get('cart', []);
-    return view('products.cart', compact('cart'));
+        $cart = session()->get('cart', []);
+        return view('products.cart', compact('cart'));
     }
 
+    /**
+     * Добавление товара в корзину.
+     */
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -39,5 +46,20 @@ class ProductController extends Controller
 
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Товар добавлен в корзину!');
+    }
+
+    /**
+     * Поиск товаров по запросу.
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Поиск по названию или описанию
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+                    ->orWhere('description', 'LIKE', "%{$query}%")
+                    ->paginate(10);
+
+        return view('products.index', compact('products'));
     }
 }

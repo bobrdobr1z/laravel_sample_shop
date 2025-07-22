@@ -16,3 +16,10 @@ class Product extends Model
         'image'
     ];
 }
+
+Product::create([
+    'name' => 'Товар 1',
+    'description' => 'Описание товара 1',
+    'price' => 100.00,
+    'image' => 'images/product1.jpg'
+]);
