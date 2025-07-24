@@ -8,12 +8,53 @@ use Illuminate\Http\Request; // Импортируем класс Request
 class ProductController extends Controller
 {
     /**
-     * Отображение списка товаров.
+     * Отображение списка товаров с поиском, сортировкой и пагинацией.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('products.index', compact('products'));
+        // Получение параметров из запроса
+        $searchQuery = $request->input('query');
+        $sortOption = $request->input('sort');
+
+        // Начинаем строить запрос к модели Product
+        $productsQuery = Product::query();
+
+        // Обработка поиска
+        if ($searchQuery) {
+            $productsQuery->where(function($query) use ($searchQuery) {
+                $query->where('name', 'LIKE', "%{$searchQuery}%")
+                      ->orWhere('description', 'LIKE', "%{$searchQuery}%");
+            });
+        }
+
+        // Обработка сортировки
+        switch ($sortOption) {
+            case 'price_asc':
+                $productsQuery->orderBy('price', 'asc');
+                break;
+            case 'price_desc':
+                $productsQuery->orderBy('price', 'desc');
+                break;
+            case 'name_asc':
+                $productsQuery->orderBy('name', 'asc');
+                break;
+            case 'name_desc':
+                $productsQuery->orderBy('name', 'desc');
+                break;
+            default:
+                // Можно оставить без сортировки или по умолчанию
+                break;
+        }
+
+        // Пагинация (например, 9 товаров на страницу)
+        $products = $productsQuery->paginate(9);
+
+        // Передача данных в представление
+        return view('products.index', [
+            'products' => $products,
+            'query' => $searchQuery,
+            'sort' => $sortOption,
+        ]);
     }
 
     /**
@@ -49,17 +90,47 @@ class ProductController extends Controller
     }
 
     /**
-     * Поиск товаров по запросу.
+     * Удаление товара из корзины.
      */
-    public function search(Request $request)
+    public function removeFromCart($id)
     {
-        $query = $request->input('query');
+        $cart = session()->get('cart', []);
 
-        // Поиск по названию или описанию
-        $products = Product::where('name', 'LIKE', "%{$query}%")
-                    ->orWhere('description', 'LIKE', "%{$query}%")
-                    ->paginate(10);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
 
-        return view('products.index', compact('products'));
+        return redirect()->back()->with('success', 'Товар удален из корзины!');
+    }
+
+    /**
+     * Обновление количества товара в корзине.
+     */
+    public function updateCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+
+        foreach ($request->input('quantities', []) as $id => $quantity) {
+            if (isset($cart[$id])) {
+                if ($quantity > 0) {
+                    $cart[$id]['quantity'] = (int)$quantity;
+                } else {
+                    unset($cart[$id]);
+                }
+            }
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Корзина обновлена!');
+    }
+
+    /**
+     * Отображение информации о конкретном товаре.
+     */
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 }

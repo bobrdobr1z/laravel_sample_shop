@@ -1,61 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# laravel_sample_shop
+Интернет-магазин игровых телефонов на Laravel
+Описание проекта
+Данный проект представляет собой интернет-магазин, специализирующийся на продаже игровых телефонов. В системе реализованы основные функции для удобства пользователей и администраторов: регистрация и вход в личный кабинет, просмотр каталога товаров, добавление товаров в корзину, оформление заказов с выбором способов доставки и оплаты, а также форма обратной связи для связи с администрацией. Проект разработан с использованием фреймворка Laravel, что обеспечивает надежность, безопасность и возможность дальнейшего расширения системы.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Инструкции по установке и запуску
+Для запуска проекта необходимо иметь установленный PHP версии не ниже 8.0, Composer, а также базу данных MySQL или аналогичную. Также потребуется Node.js и npm, если планируется сборка фронтенда.
 
-## About Laravel
+Чтобы начать работу с проектом, нужно склонировать репозиторий на свой компьютер. После этого установить все необходимые зависимости через Composer. Далее необходимо скопировать файл окружения и настроить параметры подключения к базе данных. После этого нужно сгенерировать ключ приложения и выполнить миграции базы данных — это создаст все необходимые таблицы и заполнят их начальными данными (если есть сиды).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+После завершения всех настроек можно запустить встроенный сервер Laravel, который сделает сайт доступным по локальному адресу. Обычно это адрес http://127.0.0.1:8000.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Как пользоваться сайтом
+Пользователи могут зарегистрироваться или войти в систему для оформления заказов. В каталоге представлены игровые телефоны — можно просматривать описание товаров, добавлять понравившиеся модели в корзину. После выбора товаров пользователь переходит к оформлению заказа, где указывает способ доставки и оплаты.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Также реализована форма обратной связи — через нее можно связаться с администрацией сайта для получения консультаций или поддержки.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Общая структура проекта
+Проект содержит папки с логикой приложения, шаблонами интерфейса, миграциями базы данных и публичными ресурсами (такими как изображения и стили). Все маршруты сайта определены в соответствующих файлах Laravel.
