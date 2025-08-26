@@ -1,5 +1,4 @@
-<?php
-
+/*
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,3 +24,4 @@ class ProductsTableSeeder extends Seeder
         // добавьте еще товаров по необходимости
     }
 }
+*/

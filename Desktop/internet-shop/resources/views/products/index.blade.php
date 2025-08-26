@@ -123,7 +123,7 @@
          </div> 
          <!-- Двенадцатый логотип -->
          <div class='col-md-3 col-sm=4 col=6 mb=3 d-flex flex-column align-items-center'>
-             <img src='{{asset("images/i14.png")}}' alt='Логотип' class='logo-img'>
+             <img src='{{asset("images/ip14.jpg")}}' alt='Логотип' class='logo-img'>
              <p class='logo-info'>iPhone 14</p>
          </div> 
     </div>
